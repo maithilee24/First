@@ -19,7 +19,7 @@ function Page1() {
       xl:text-base xl:pt-10 xl:pr-[3.2rem] xl:pb-6'>
       The combination of AI (Artificial Intelligence) with RPA (Robotic Process Automation) heralds a new era in business process optimization. RPA, leveraging software robots to automate repetitive tasks, and AI, endowed with cognitive capabilities such as natural language processing and machine learning, converge to create a potent synergy. This partnership holds the promise of significantly enhancing business operations across diverse industries. By integrating AI and RPA technologies, organizations can future-proof their operations, driving efficiency, boosting profitability, and delivering exceptional customer experiences. This introduction sets the stage for exploring the profound impact and transformative potential of AI with RPA in reshaping the landscape of modern business processes.
       </p>
-      <img className=" pb-4 w-auto h-1/3 sm:h-auto sm:w-1/2 " src={entryinfo[0].imgURL} alt="AI and RPA"  />
+      <img className=" pb-4 w-auto h-1/3 sm:h-full sm:full " src={entryinfo[0].imgURL} alt="AI and RPA"  />
       </div>
       {page1Info.map(info =>(
         <ol  className=" text-[0.7rem] sm:text-[0.55rem] md:text-[0.65rem] lg:text-[0.8rem] xl:text-base">

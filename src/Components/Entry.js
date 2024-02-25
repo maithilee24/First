@@ -1,37 +1,54 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DarkModeContext from "../DarkModeContext";
+import "../App.css";
 
 function Entry(props){
 
     const { isDarkMode } = useContext(DarkModeContext);
+    const [mounted, setMounted] = useState(false);
     
+    useEffect(() => {
+        setMounted(true);
+      }, []);
+
+      useEffect(() => {
+        const delay = props.index * 200;
+        const timer = setTimeout(() => {
+          setMounted(true);
+        }, delay);
+    
+        return () => clearTimeout(timer);
+      }, [props.index]);
 
     return (
-        <div className={`flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row ${isDarkMode ? "text-white" : "text-black"}`}>
-            <div className="flex flex-col sm:w-1/2 sm:h-1/4 sm:pr-8 md:pr-14 lg:pr-20 xl:pr-24">
+        <div className={`flex flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row ${isDarkMode ? "text-white" : "text-black"} ${mounted ? "slide-up" : ""}`}>
+            <div className={`flex flex-col sm:w-1/2 sm:h-1/4 sm:pr-8 md:pr-14 lg:pr-20 xl:pr-24 `}>
             <div className="pb-2">
-            <h2 className="font-thin sm:pt-4 text-[1.6rem]
+            <h2 className={`font-thin sm:pt-4 text-[1.6rem]
                     sm:text-2xl sm:pb-2 sm:pr-20
                     md:text-3xl md:pb-4 md:pr-16
                     lg:text-5xl lg:pb-6 lg:pr-12 lg:pt-4
-                    xl:text-[3.5rem] xl:pb-8 xl:pr-10 xl:pt-8">
+                    xl:text-[3.5rem] xl:pb-8 xl:pr-10 xl:pt-8 
+                    hover:scale-105 hover:shadow-sm transition-all hover:cursor-pointer`}>
                     {props.title}</h2>
             </div>
-                <div className=" block pb-3 sm:hidden md:hidden lg:hidden xl:hidden">
-                    <img src={props.img} className="max-h-[12rem]"  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className={` block pb-3 sm:hidden md:hidden lg:hidden xl:hidden `}>
+                    <img src={props.img} className="h-full"  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="pb-4">
-                    <p className="font-medium text-[0.6rem]
+                    <p className={`font-medium text-[0.6rem]
                     sm:text-[0.6rem] sm:pb-2 
                     md:text-[0.7rem] md:pb-4
                     lg:text-[1rem] lg:pb-6  
-                    xl:text-lg xl:pb-8">
+                    xl:text-lg xl:pb-8`}>
                     {props.content}</p>
                 </div>
                 <Link to={props.link}>
-                <div className="flex flex-row items-center">
-                <p className={`font-bold ${isDarkMode ? "text-white" : "sm:text-black"} ${isDarkMode ? "" : "text-blue-700"} pr-2 text-xs sm:text-xs md:text-[0.8rem] lg:text-[1.1rem] xl:text-[1.4rem]`}>
+                <div className={`flex flex-row items-center `}>
+                <p className={`font-bold ${isDarkMode ? "text-white" : "sm:text-black"} ${isDarkMode ? "" : "text-blue-700"} 
+                hover:text-opacity-50 transition-all
+                pr-2 text-xs sm:text-xs md:text-[0.8rem] lg:text-[1.1rem] xl:text-[1.4rem] `}>
                 {props.linkContent}
                 </p>
                 <img className="ml-2 my-2 w-2 h-1
@@ -42,9 +59,9 @@ function Entry(props){
                 </div>
                 </Link>
             </div>
-            <div className=" hidden sm:block md:block lg:block xl:block
-            w-1/2 ">
-                <img src={props.img} className=" sm:h-auto sm:max-h-[16rem] md:max-h-[18rem] lg:max-h-[20rem] xl:max-h-[22rem]"  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <div className={` hidden sm:block md:block lg:block xl:block
+             w-1/2`}>
+                <img src={props.img} className=" sm:h-full sm:max-h-[16rem] md:max-h-[18rem] lg:max-h-[20rem] xl:max-h-[22rem]"  style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
         </div>
     );

@@ -12,12 +12,12 @@ function Home() {
       sm:pt-4 sm:px-12 md:px-14 
       lg:px-20 lg:pt-6 
       xl:px-52 xl:pt-7   
-      ${isDarkMode ? "text-[#F0F8FF]" : "text-[#212529]"} ${isDarkMode ? "bg-[#212529]" : "bg-[#F0F8FF]"} transition-colors duration-700`}>
+      ${isDarkMode ? "text-[#F0F8FF]" : "text-[#212529]"} ${isDarkMode ? "bg-[#212529]" : "bg-[#F0F8FF]"} transition-colors duration-300 ease-in-out delay-10`}>
       <div>
         <h4 className="font-bold pb-3
          sm:pl-4 lg:pb-8
           xl:pb-8 xl:pl-8 lg:pl-6 text-xs 
-          sm:text-sm md:text-base lg:text-xl xl:text-2xl">Lets Collaborate</h4>
+          sm:text-sm md:text-base lg:text-xl xl:text-2xl hover:scale-105 hover:opacity-50 transition-all duration-500 hover:cursor-pointer">Lets Collaborate</h4>
       </div>
       {entryinfo.map(entry => (
         <Entry className="dark:text-white"

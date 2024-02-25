@@ -37,3 +37,28 @@
   }
 }
 
+.slide-up {
+  animation: slideUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flip-flop-image {
+  transition: transform 0.5s ease;
+}
+
+.flip-flop-image:hover {
+  transform: rotateY(180deg);
+  transition-duration: 0.5s;
+}
