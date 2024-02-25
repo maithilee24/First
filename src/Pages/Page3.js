@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from "react";
 import entryinfo from '../Entryinfo';
 import page1Info from '../Page3Info';
+import DarkModeContext from "../DarkModeContext";
 
 function Page3() {
+
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className='px-10 py-6 sm:px-16 sm:py-6 md:px-20 md:py-8 lg:px-28 lg:py-10 xl:px-48 xl:py-12 bg-[#F0F8FF]' >
+    <div className={`px-10 py-6 sm:px-16 sm:py-6 md:px-20 md:py-8 lg:px-28 lg:py-10 xl:px-48 xl:py-12 ${isDarkMode ? "text-[#F0F8FF]" : "text-[#212529]"} ${isDarkMode ? "bg-[#212529]" : "bg-[#F0F8FF]"}`} >
       <h1 className="font-bold  text-lg sm:text-xl sm:pb-3 md:text-2xl md:pb-4 lg:text-3xl lg:pb-4 xl:text-5xl">{entryinfo[2].title}</h1>
       <div className='flex flex-col sm:flex-row'>
       <p className='
